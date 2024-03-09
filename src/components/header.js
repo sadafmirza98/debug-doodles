@@ -28,8 +28,8 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#services">
-                  Services
+                <a className="nav-link scrollto" href="#code-repo">
+                  Code Repository
                 </a>
               </li>
               <li>

@@ -23,29 +23,26 @@ function Main() {
               data-aos="fade-left"
               data-aos-delay="200"
             >
-              <p>
-                Using advanced algorithms and innovative visualization
-                techniques, Debug Doodle analyzes your code and highlights
-                potential bugs and errors.
-              </p>
+              <p>Debug Doodle is as simple as 1-2-3.</p>
               <ul>
                 <li>
                   <i className="ri-check-double-line"></i>{" "}
-                  <strong>Interactive Code Visualization: </strong>See your code
-                  come to life with interactive visualizations that make it easy
-                  to understand the flow of execution.
+                  <strong>Navigate to the 'Post Code' Section: </strong>Enter
+                  your 'Problem Statement' and fill in the details.Share your
+                  ingenious solution and watch your solution come to life on
+                  Debug Doodle!
                 </li>
                 <li>
                   <i className="ri-check-double-line"></i>{" "}
-                  <strong>Real-time Error Detection: </strong>Catch bugs as they
-                  happen with real-time error detection and intelligent
-                  suggestions for fixing common issues.
+                  <strong>Navigate to the 'Code Repository' section: </strong>
+                  Checkout different problems and their solutions posted by
+                  other users.
                 </li>
                 <li>
                   <i className="ri-check-double-line"></i>{" "}
-                  <strong>Collaboration Tools: </strong>
-                  Share your code and collaborate with team members to tackle
-                  bugs together, no matter where they are.
+                  <strong>Connect with me: </strong>
+                  Share your code, feedback and insights with me. Join our
+                  coders community.
                 </li>
               </ul>
             </div>
@@ -87,10 +84,10 @@ function Main() {
                   >
                     <div className="icon-box mt-4 mt-xl-0">
                       <i className="bx bx-receipt"></i>
-                      <h4>Corporis voluptates sit</h4>
+                      <h4>Post Code</h4>
                       <p>
-                        Consequuntur sunt aut quasi enim aliquam quae harum
-                        pariatur laboris nisi ut aliquip
+                        Submit Your Coding Challenge and Share its Solution with
+                        the community.
                       </p>
                     </div>
                   </div>
@@ -101,10 +98,11 @@ function Main() {
                   >
                     <div className="icon-box mt-4 mt-xl-0">
                       <i className="bx bx-cube-alt"></i>
-                      <h4>Ullamco laboris ladore pan</h4>
+                      <h4>Explore Code Repository</h4>
                       <p>
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt
+                        Browse the Coding Listings to explore a variety of
+                        coding solutions and projects submitted by our
+                        community.
                       </p>
                     </div>
                   </div>
@@ -115,10 +113,11 @@ function Main() {
                   >
                     <div className="icon-box mt-4 mt-xl-0">
                       <i className="bx bx-images"></i>
-                      <h4>Labore consequatur</h4>
+                      <h4>Connect with the community</h4>
                       <p>
-                        Aut suscipit aut cum nemo deleniti aut omnis. Doloribus
-                        ut maiores omnis facere
+                        Engage with the community to collaborate, share
+                        knowledge, and build connections with fellow coding
+                        enthusiasts.
                       </p>
                     </div>
                   </div>
@@ -128,16 +127,55 @@ function Main() {
           </div>
         </div>
       </section>
-      <section id="services" className="services">
+      <section id="post-code" className="post-code">
         <div className="container">
           <div className="row">
             <div className="col-lg-4">
               <div className="section-title" data-aos="fade-right">
-                <h2>Services</h2>
+                <h2>Post Code</h2>
                 <p>
-                  Magnam dolores commodi suscipit nemo qui impedit suscipit
-                  alias ea. Quia fugiat sit in iste officiis commodi quidem hic
-                  quas.
+                  Dive into the heart of your coding challenge by typing out a
+                  conscise problem statement. Once you've outlined the problem
+                  statement, share your ingenious solution. Then, with a simple
+                  click of the 'Publish' button, watch your solution come to
+                  life on Debug Doodle!
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <div className="row">
+                <div className="col-md-6 d-flex align-items-stretch">
+                  <div
+                    className="icon-box"
+                    data-aos="zoom-in"
+                    data-aos-delay="200"
+                  >
+                    <div className="icon">
+                      <i className="bx bx-file"></i>
+                    </div>
+                    <h4>
+                      <a href="">Sed ut perspiciatis</a>
+                    </h4>
+                    <p>
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="code-repo" className="code-repo">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="section-title" data-aos="fade-right">
+                <h2>Code Repository</h2>
+                <p>
+                  Browse the Coding Listings to explore a variety of coding
+                  solutions and projects submitted by our community
                 </p>
               </div>
             </div>
