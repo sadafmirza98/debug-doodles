@@ -1,9 +1,17 @@
 import React from "react";
 
-const EditCode = ({ codeData, toggleEditMode }) => {
+const EditCode = ({ codeData, onDelete }) => {
+  console.log("codeData", codeData);
   if (!codeData) {
     return <p>No code data available</p>;
   }
+
+  const handleDelete = () => {
+    // Call the onDelete function passed from the parent component
+    if (onDelete) {
+      onDelete(codeData.id); // Pass the id of the code to be deleted
+    }
+  };
 
   return (
     <section id="edit-code" className="post-code">
@@ -66,12 +74,11 @@ const EditCode = ({ codeData, toggleEditMode }) => {
                       defaultValue={codeData.code} // Populate code field with existing data
                     ></textarea>
                   </div>
-                  <button
-                    className="button"
-                    type="submit"
-                    onClick={toggleEditMode}
-                  >
+                  <button className="button" type="submit">
                     UPDATE
+                  </button>
+                  <button className="button" onClick={handleDelete}>
+                    DELETE
                   </button>
                 </div>
               </div>

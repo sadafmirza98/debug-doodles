@@ -11,7 +11,7 @@ const CodeRepository = () => {
 
   const handleIconBoxClick = (code) => {
     setSelectedCode(code);
-    setEditMode(!editMode);
+    setEditMode(true);
   };
 
   useEffect(() => {
@@ -35,6 +35,22 @@ const CodeRepository = () => {
       console.error("Error fetching data:", error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDeleteCode = async (id) => {
+    try {
+      const response = await fetch(`${baseUrl}/${id}.json`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete code");
+      }
+      // Remove the deleted code from the codes state
+      setCodes(codes.filter((code) => code.id !== id));
+      setEditMode(false); // Exit edit mode after deleting
+    } catch (error) {
+      console.error("Error deleting code:", error);
     }
   };
 
@@ -97,7 +113,9 @@ const CodeRepository = () => {
           </div>
         </div>
       </div>
-      {editMode && <EditCode code={selectedCode} />}
+      {editMode && (
+        <EditCode codeData={selectedCode} onDelete={handleDeleteCode} />
+      )}
     </section>
   );
 };
