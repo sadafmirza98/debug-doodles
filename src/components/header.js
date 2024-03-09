@@ -20,7 +20,7 @@ const Header = () => {
       });
     };
 
-    const scrollto = (el) => {
+    /*     const scrollto = (el) => {
       let header = document.querySelector("#header");
       let offset = header.offsetHeight;
 
@@ -29,7 +29,7 @@ const Header = () => {
         top: elementPos - offset,
         behavior: "smooth",
       });
-    };
+    }; */
 
     const selectHeader = document.querySelector("#header");
     const headerScrolled = () => {
@@ -174,13 +174,13 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#post-code">
-                  Post Code
+                <a className="nav-link scrollto" href="#code-repo">
+                  Code Repository
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#code-repo">
-                  Code Repository
+                <a className="nav-link scrollto" href="#post-code">
+                  Post Code
                 </a>
               </li>
               <li>

@@ -7,8 +7,8 @@ function MainBody() {
   return (
     <main id="main">
       <About />
-      <PostCode />
       <CodeRepository />
+      <PostCode />
       <Cta />
     </main>
   );

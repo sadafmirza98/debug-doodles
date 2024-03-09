@@ -1,18 +1,23 @@
 import React from "react";
-const PostCode = () => {
+
+const EditCode = ({ toggleEditMode }) => {
+  // Dummy data for pre-filled fields (you can replace this with actual data)
+  const codeData = {
+    title: "Existing Title",
+    description: "Existing Description",
+    code: "Existing Code",
+  };
+
   return (
-    <section id="post-code" className="post-code">
+    <section id="edit-code" className="post-code">
       <div className="container">
         <div className="row">
           <div className="col-lg-4">
             <div className="section-title" data-aos="fade-right">
-              <h2>Post a New Code</h2>
+              <h2>Edit Code</h2>
               <p style={{ fontSize: "20px" }}>
-                Dive into the heart of your coding challenge by typing out a
-                conscise problem statement. Once you've outlined the problem
-                statement, share your ingenious solution. Then, with a simple
-                click of the 'Publish' button, watch your solution come to life
-                on Debug Doodle!
+                Make changes to existing codes, problem statements and make
+                modifications with ease.
               </p>
             </div>
           </div>
@@ -24,9 +29,6 @@ const PostCode = () => {
                   data-aos="zoom-in"
                   data-aos-delay="200"
                 >
-                  <div className="icon">
-                    <i className="bx bx-file"></i>
-                  </div>
                   <div className="form-group">
                     <label className="input-label" htmlFor="title">
                       Title:
@@ -37,7 +39,8 @@ const PostCode = () => {
                       id="title"
                       name="title"
                       placeholder="Enter title"
-                      required // Add required attribute for form validation
+                      defaultValue={codeData.title} // Populate title field with existing data
+                      required
                     />
                   </div>
                   <div className="form-group">
@@ -49,7 +52,8 @@ const PostCode = () => {
                       id="description"
                       name="description"
                       placeholder="Enter description"
-                      required // Add required attribute for form validation
+                      defaultValue={codeData.description} // Populate description field with existing data
+                      required
                     ></textarea>
                   </div>
                   <div className="form-group">
@@ -61,11 +65,16 @@ const PostCode = () => {
                       id="code"
                       name="code"
                       placeholder="Enter code"
-                      rows="2"
+                      rows="6"
+                      defaultValue={codeData.code} // Populate code field with existing data
                     ></textarea>
                   </div>
-                  <button className="button" type="submit">
-                    PUBLISH
+                  <button
+                    className="button"
+                    type="submit"
+                    onClick={toggleEditMode}
+                  >
+                    UPDATE
                   </button>
                 </div>
               </div>
@@ -76,4 +85,5 @@ const PostCode = () => {
     </section>
   );
 };
-export default PostCode;
+
+export default EditCode;

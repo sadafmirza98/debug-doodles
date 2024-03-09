@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import EditCode from "./editCode"; // Import your EditCode component
 
 const CodeRepository = () => {
+  const [editMode, setEditMode] = useState(false);
+
+  const handleIconBoxClick = () => {
+    // Toggle the edit mode state when an icon box is clicked
+    setEditMode(!editMode);
+  };
   // Array of objects containing data for each box
   const iconBoxes = [
     {
@@ -55,14 +62,15 @@ const CodeRepository = () => {
                       className="icon-box mt-4"
                       data-aos="zoom-in"
                       data-aos-delay={100 * index}
+                      onClick={handleIconBoxClick} // Add onClick event handler
                     >
-                      <div className="icon">
-                        <i className="bi bi-file-earmark-code"></i>
-                      </div>
-                      <h4>
-                        <a href="">{box.title}</a>
-                      </h4>
-                      <p>{box.description}</p>
+                      <a href="#edit-code">
+                        <div className="icon">
+                          <i className="bi bi-file-earmark-code"></i>
+                        </div>
+                        <h4 style={{ color: "black" }}>{box.title}</h4>
+                        <p style={{ color: "black" }}>{box.description}</p>
+                      </a>
                     </div>
                   </div>
                 ))
@@ -81,6 +89,7 @@ const CodeRepository = () => {
           </div>
         </div>
       </div>
+      {editMode && <EditCode />}
     </section>
   );
 };
