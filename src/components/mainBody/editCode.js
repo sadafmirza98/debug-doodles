@@ -1,12 +1,9 @@
 import React from "react";
 
-const EditCode = ({ toggleEditMode }) => {
-  // Dummy data for pre-filled fields (you can replace this with actual data)
-  const codeData = {
-    title: "Existing Title",
-    description: "Existing Description",
-    code: "Existing Code",
-  };
+const EditCode = ({ codeData, toggleEditMode }) => {
+  if (!codeData) {
+    return <p>No code data available</p>;
+  }
 
   return (
     <section id="edit-code" className="post-code">

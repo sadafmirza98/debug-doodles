@@ -5,11 +5,15 @@ const CodeRepository = () => {
   const baseUrl = "https://debug-doodles-default-rtdb.firebaseio.com/code-repo";
 
   const [editMode, setEditMode] = useState(false);
+  const [selectedCode, setSelectedCode] = useState(null);
   const [codes, setCodes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const handleIconBoxClick = () => {
+
+  const handleIconBoxClick = (code) => {
+    setSelectedCode(code);
     setEditMode(!editMode);
   };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -27,8 +31,8 @@ const CodeRepository = () => {
         ...data[key],
       }));
       setCodes(codesArray);
-      console.log("codes", codes);
     } catch (error) {
+      console.error("Error fetching data:", error);
     } finally {
       setIsLoading(false);
     }
@@ -65,8 +69,8 @@ const CodeRepository = () => {
                       style={{ minWidth: "25vw" }}
                       data-aos="zoom-in"
                       data-aos-delay={100 * index}
-                      onClick={handleIconBoxClick}
-                      key={code.id} // Add onClick event handler
+                      onClick={() => handleIconBoxClick(code)} // Pass the code data to handleIconBoxClick
+                      key={code.id}
                     >
                       <a href="#edit-code">
                         <div className="icon">
@@ -93,7 +97,7 @@ const CodeRepository = () => {
           </div>
         </div>
       </div>
-      {editMode && <EditCode />}
+      {editMode && <EditCode code={selectedCode} />}
     </section>
   );
 };
