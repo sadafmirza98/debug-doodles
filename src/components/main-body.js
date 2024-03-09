@@ -1,6 +1,6 @@
 import React from "react";
 
-function Main() {
+function MainBody() {
   return (
     <main id="main">
       <section id="about" className="about">
@@ -280,4 +280,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainBody;

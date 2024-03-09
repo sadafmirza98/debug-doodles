@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/header";
 import Home from "./components/home";
-import Main from "./components/main";
+import MainBody from "./components/main-body";
 import Footer from "./components/footer";
 import BackToTop from "./components/backToTop";
 
@@ -10,7 +10,7 @@ function App() {
     <div>
       <Header />
       <Home />
-      <Main />
+      <MainBody />
       <Footer />
       <BackToTop />
     </div>
