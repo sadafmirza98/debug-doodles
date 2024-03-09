@@ -54,6 +54,30 @@ const CodeRepository = () => {
     }
   };
 
+  const handleUpdateCode = async (id, updatedData) => {
+    try {
+      const response = await fetch(`${baseUrl}/${id}.json`, {
+        method: "PATCH", // Use PATCH method for partial updates
+        body: JSON.stringify(updatedData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to update code");
+      }
+      // Update the code in the codes state with the updated data
+      setCodes(
+        codes.map((code) =>
+          code.id === id ? { ...code, ...updatedData } : code
+        )
+      );
+      setEditMode(false); // Exit edit mode after updating
+    } catch (error) {
+      console.error("Error updating code:", error);
+    }
+  };
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -114,7 +138,11 @@ const CodeRepository = () => {
         </div>
       </div>
       {editMode && (
-        <EditCode codeData={selectedCode} onDelete={handleDeleteCode} />
+        <EditCode
+          codeData={selectedCode}
+          onDelete={handleDeleteCode}
+          onUpdate={handleUpdateCode}
+        />
       )}
     </section>
   );

@@ -1,10 +1,22 @@
 import React from "react";
 
-const EditCode = ({ codeData, onDelete }) => {
-  console.log("codeData", codeData);
+const EditCode = ({ codeData, onDelete, onUpdate }) => {
   if (!codeData) {
     return <p>No code data available</p>;
   }
+
+  const handleUpdate = () => {
+    const updatedData = {
+      title: document.getElementById("title").value,
+      description: document.getElementById("description").value,
+      code: document.getElementById("code").value,
+    };
+
+    // Call the onUpdate function passed from the parent component
+    if (onUpdate) {
+      onUpdate(codeData.id, updatedData); // Pass the id and updated data to the parent component
+    }
+  };
 
   const handleDelete = () => {
     // Call the onDelete function passed from the parent component
@@ -74,7 +86,11 @@ const EditCode = ({ codeData, onDelete }) => {
                       defaultValue={codeData.code} // Populate code field with existing data
                     ></textarea>
                   </div>
-                  <button className="button" type="submit">
+                  <button
+                    className="button"
+                    type="submit"
+                    onClick={handleUpdate}
+                  >
                     UPDATE
                   </button>
                   <button className="button" onClick={handleDelete}>
