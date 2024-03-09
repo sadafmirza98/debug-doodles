@@ -45,26 +45,38 @@ const CodeRepository = () => {
           <div className="col-lg-8">
             <div className="row">
               {/* Map over the array of icon boxes */}
-              {iconBoxes.map((box, index) => (
-                <div
-                  key={index}
-                  className="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
-                >
+              {iconBoxes.length > 0 ? (
+                iconBoxes.map((box, index) => (
                   <div
-                    className="icon-box mt-4"
-                    data-aos="zoom-in"
-                    data-aos-delay={100 * index}
+                    key={index}
+                    className="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
                   >
-                    <div className="icon">
-                      <i className={box.iconClass}></i>
+                    <div
+                      className="icon-box mt-4"
+                      data-aos="zoom-in"
+                      data-aos-delay={100 * index}
+                    >
+                      <div className="icon">
+                        <i className={box.iconClass}></i>
+                      </div>
+                      <h4>
+                        <a href="">{box.title}</a>
+                      </h4>
+                      <p>{box.description}</p>
                     </div>
-                    <h4>
-                      <a href="">{box.title}</a>
-                    </h4>
-                    <p>{box.description}</p>
                   </div>
+                ))
+              ) : (
+                <div className="col-12 text-center">
+                  <p>
+                    No codes available at the moment. Start sharing your
+                    brilliant solutions!
+                  </p>
+                  <a href="#post-code" className="button">
+                    PUBLISH NEW CODE
+                  </a>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>

@@ -82,44 +82,48 @@ const About = () => {
                     data-aos="zoom-in"
                     data-aos-delay="100"
                   >
-                    <div className="icon-box mt-4 mt-xl-0">
+                    <a href="#post-code" className="icon-box mt-4 mt-xl-0">
                       <i className="bx bx-receipt"></i>
-                      <h4>Post Code</h4>
+                      <h4 style={{ color: "black" }}>Post Code</h4>
                       <p>
                         Submit Your Coding Challenge and Share its Solution with
                         the community.
                       </p>
-                    </div>
+                    </a>
                   </div>
                   <div
                     className="col-xl-4 d-flex align-items-stretch"
                     data-aos="zoom-in"
                     data-aos-delay="200"
                   >
-                    <div className="icon-box mt-4 mt-xl-0">
+                    <a href="#code-repo" className="icon-box mt-4 mt-xl-0">
                       <i className="bx bx-cube-alt"></i>
-                      <h4>Explore Code Repository</h4>
+                      <h4 style={{ color: "black" }}>
+                        Explore Code Repository
+                      </h4>
                       <p>
                         Browse the Coding Listings to explore a variety of
                         coding solutions and projects submitted by our
                         community.
                       </p>
-                    </div>
+                    </a>
                   </div>
                   <div
                     className="col-xl-4 d-flex align-items-stretch"
                     data-aos="zoom-in"
                     data-aos-delay="300"
                   >
-                    <div className="icon-box mt-4 mt-xl-0">
+                    <a href="#cta" className="icon-box mt-4 mt-xl-0">
                       <i className="bx bx-images"></i>
-                      <h4>Connect with the community</h4>
+                      <h4 style={{ color: "black" }}>
+                        Join our doodler community
+                      </h4>
                       <p>
                         Engage with the community to collaborate, share
                         knowledge, and build connections with fellow coding
                         enthusiasts.
                       </p>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </div>

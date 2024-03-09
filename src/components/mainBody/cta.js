@@ -5,7 +5,7 @@ const Cta = () => {
     <section id="cta" className="cta">
       <div className="container">
         <div className="text-center" data-aos="zoom-in">
-          <h3>Connect with me</h3>
+          <h3>Join our Debug Doodler Community</h3>
           <p>
             Whether it's debugging challenges, coding tutorials, or simply
             exchanging ideas, together we can make coding more fun and
@@ -13,9 +13,9 @@ const Cta = () => {
           </p>
           <a
             className="cta-btn"
-            href="https://www.linkedin.com/in/sadaf-mirza/"
+            href="https://www.linkedin.com/groups/8198646/"
           >
-            Connect now
+            Join now
           </a>
         </div>
       </div>

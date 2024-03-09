@@ -184,7 +184,7 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a className="getstarted scrollto" href="#code-repo">
+                <a className="getstarted scrollto" href="#about">
                   Get Started
                 </a>
               </li>

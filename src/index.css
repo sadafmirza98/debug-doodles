@@ -8,7 +8,7 @@ body {
 
 a {
   color: #006565;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover {
@@ -25,6 +25,26 @@ h6 {
   font-family: "Rubik Doodle Shadow", system-ui;
 }
 
+.button,
+.button:focus {
+  background: #006565;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 50px;
+  color: #fff;
+  margin: 20px;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button:hover,
+.button:focus:hover {
+  color: #fff;
+  background: #00b383;
+}
+
 .rubik-doodle shadow-regular {
   font-family: "Rubik Doodle Shadow", system-ui;
   font-weight: 400;
@@ -32,7 +52,8 @@ h6 {
 }
 
 p,
-li {
+li,
+label {
   font-family: "Playpen Sans", cursive;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -551,6 +572,7 @@ section {
   transition: 0.3s;
   border: 2px solid;
   border-color: black;
+  transition: all 0.3s ease;
 }
 
 .why-us .icon-boxes .icon-box i {
@@ -571,7 +593,8 @@ section {
 }
 
 .why-us .icon-boxes .icon-box:hover {
-  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 25px rgba(2, 86, 64, 0.826);
+  transform: translateY(-5px); /* Move the card up a little on hover */
 }
 
 /*--------------------------------------------------------------
@@ -625,31 +648,23 @@ section {
   min-height: 100vh !important;
 }
 
+.input-label {
+  display: block;
+  padding: 10px; /* Adjust as needed */
+  margin: 5px; /* Adjust as needed */
+  text-align: left;
+}
+
 .post-code .icon-box {
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 20px 20px 20px;
   transition: all ease-in-out 0.3s;
   background: #fff;
   border: 2px solid;
   border-color: black;
-}
-
-.post-code .icon-box .icon {
-  margin: 0 auto;
-  width: 64px;
-  height: 64px;
-  border-radius: 50px;
-  border: 1px solid #006565;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  transition: ease-in-out 0.3s;
-  color: #006565;
-}
-
-.post-code .icon-box .icon i {
-  font-size: 28px;
+  height: 90vh;
+  min-width: 57vw;
+  overflow: auto;
 }
 
 .post-code .icon-box h4 {
@@ -682,6 +697,24 @@ section {
 .post-code .icon-box:hover .icon {
   color: #fff;
   background: #006565;
+}
+
+.post-code .icon-box .icon {
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50px;
+  border: 1px solid #006565;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: ease-in-out 0.3s;
+  color: #006565;
+}
+
+.post-code .icon-box .icon i {
+  font-size: 28px;
 }
 
 /*--------------------------------------------------------------
@@ -732,9 +765,10 @@ section {
 }
 
 .code-repo .icon-box:hover {
-  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
   border: 2px solid;
   border-color: #006565;
+  box-shadow: 0px 5px 25px rgba(2, 86, 64, 0.826);
+  transform: translateY(-5px);
 }
 
 .code-repo .icon-box:hover h4 a {

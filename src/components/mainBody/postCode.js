@@ -27,13 +27,46 @@ const PostCode = () => {
                   <div className="icon">
                     <i className="bx bx-file"></i>
                   </div>
-                  <h4>
-                    <a href="">Sed ut perspiciatis</a>
-                  </h4>
-                  <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore
-                  </p>
+                  <div className="form-group">
+                    <label className="input-label" htmlFor="title">
+                      Title:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="title"
+                      name="title"
+                      placeholder="Enter title"
+                      required // Add required attribute for form validation
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="input-label" htmlFor="description">
+                      Description:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="description"
+                      name="description"
+                      placeholder="Enter description"
+                      required // Add required attribute for form validation
+                    ></textarea>
+                  </div>
+                  <div className="form-group">
+                    <label className="input-label" htmlFor="code">
+                      Code:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="code"
+                      name="code"
+                      placeholder="Enter code"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                  <button className="button" type="submit">
+                    PUBLISH
+                  </button>
                 </div>
               </div>
             </div>
