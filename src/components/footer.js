@@ -21,10 +21,10 @@ function Footer() {
             <i className="bi bi-linkedin"></i>
           </a>
           <a href="https://github.com/sadafmirza98/">
-            <i class="bi bi-github"></i>
+            <i className="bi bi-github"></i>
           </a>
           <a href="https://www.hackerrank.com/profile/sadafmirza98">
-            <i class="bi bi-code-slash"></i>
+            <i className="bi bi-code-slash"></i>
           </a>
         </div>
       </div>

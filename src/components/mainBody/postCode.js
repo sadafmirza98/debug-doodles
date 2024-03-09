@@ -7,7 +7,7 @@ const PostCode = () => {
           <div className="col-lg-4">
             <div className="section-title" data-aos="fade-right">
               <h2>Post Code</h2>
-              <p>
+              <p style={{ fontSize: "20px" }}>
                 Dive into the heart of your coding challenge by typing out a
                 conscise problem statement. Once you've outlined the problem
                 statement, share your ingenious solution. Then, with a simple
@@ -61,7 +61,7 @@ const PostCode = () => {
                       id="code"
                       name="code"
                       placeholder="Enter code"
-                      rows="3"
+                      rows="2"
                     ></textarea>
                   </div>
                   <button className="button" type="submit">

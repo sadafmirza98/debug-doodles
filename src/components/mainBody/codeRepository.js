@@ -36,7 +36,7 @@ const CodeRepository = () => {
           <div className="col-lg-4">
             <div className="section-title" data-aos="fade-right">
               <h2>Code Repository</h2>
-              <p>
+              <p style={{ fontSize: "20px" }}>
                 Browse the Coding Listings to explore a variety of coding
                 solutions and projects submitted by our community
               </p>
@@ -57,7 +57,7 @@ const CodeRepository = () => {
                       data-aos-delay={100 * index}
                     >
                       <div className="icon">
-                        <i className={box.iconClass}></i>
+                        <i className="bi bi-file-earmark-code"></i>
                       </div>
                       <h4>
                         <a href="">{box.title}</a>
