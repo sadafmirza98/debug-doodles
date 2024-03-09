@@ -1,40 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EditCode from "./editCode"; // Import your EditCode component
 
 const CodeRepository = () => {
-  const [editMode, setEditMode] = useState(false);
+  const baseUrl = "https://debug-doodles-default-rtdb.firebaseio.com/code-repo";
 
+  const [editMode, setEditMode] = useState(false);
+  const [codes, setCodes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const handleIconBoxClick = () => {
-    // Toggle the edit mode state when an icon box is clicked
     setEditMode(!editMode);
   };
-  // Array of objects containing data for each box
-  const iconBoxes = [
-    {
-      iconClass: "bx bxl-dribbble",
-      title: "Lorem Ipsum",
-      description:
-        "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi",
-    },
-    {
-      iconClass: "bx bx-file",
-      title: "Sed ut perspiciatis",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore",
-    },
-    {
-      iconClass: "bx bx-tachometer",
-      title: "Magni Dolores",
-      description:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia",
-    },
-    {
-      iconClass: "bx bx-world",
-      title: "Nemo Enim",
-      description:
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis",
-    },
-  ];
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${baseUrl}.json`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      const codesArray = Object.keys(data || {}).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
+      setCodes(codesArray);
+      console.log("codes", codes);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section id="code-repo" className="code-repo">
@@ -52,24 +54,26 @@ const CodeRepository = () => {
           <div className="col-lg-8">
             <div className="row">
               {/* Map over the array of icon boxes */}
-              {iconBoxes.length > 0 ? (
-                iconBoxes.map((box, index) => (
+              {codes.length > 0 ? (
+                codes.map((code, index) => (
                   <div
                     key={index}
                     className="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
                   >
                     <div
                       className="icon-box mt-4"
+                      style={{ minWidth: "25vw" }}
                       data-aos="zoom-in"
                       data-aos-delay={100 * index}
-                      onClick={handleIconBoxClick} // Add onClick event handler
+                      onClick={handleIconBoxClick}
+                      key={code.id} // Add onClick event handler
                     >
                       <a href="#edit-code">
                         <div className="icon">
                           <i className="bi bi-file-earmark-code"></i>
                         </div>
-                        <h4 style={{ color: "black" }}>{box.title}</h4>
-                        <p style={{ color: "black" }}>{box.description}</p>
+                        <h4 style={{ color: "black" }}>{code.title}</h4>
+                        <p style={{ color: "black" }}>{code.description}</p>
                       </a>
                     </div>
                   </div>
