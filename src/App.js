@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/header";
 import Home from "./components/home";
-import MainBody from "./components/main-body";
+import MainBody from "./components/mainBody/mainBody";
 import Footer from "./components/footer";
 import BackToTop from "./components/backToTop";
 

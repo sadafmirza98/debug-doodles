@@ -2,7 +2,7 @@ import React from "react";
 
 function Home() {
   return (
-    <section id="hero" className="d-flex align-items-center">
+    <section id="home" className="d-flex align-items-center">
       <div
         className="container text-center position-relative"
         data-aos="fade-in"
