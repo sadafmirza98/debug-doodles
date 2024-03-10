@@ -94,6 +94,13 @@ li {
   opacity: 1;
 }
 
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  .button {
+    margin: 10px; /* Adjusted for responsiveness */
+  }
+}
+
 /*--------------------------------------------------------------
 # Disable AOS delay on mobile
 --------------------------------------------------------------*/
@@ -155,7 +162,7 @@ li {
   max-height: 40px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   #header {
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     top: 0;
@@ -261,6 +268,14 @@ li {
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+  }
+
+  #header .header-container {
+    border: none;
+  }
+
+  #header .logo {
+    border: none;
   }
 
   .navbar ul {
@@ -719,6 +734,14 @@ section {
   font-size: 28px;
 }
 
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  .post-code .icon-box {
+    padding: 10vw;
+    min-width: 85vw;
+  }
+}
+
 /*--------------------------------------------------------------
 # Code Repository
 --------------------------------------------------------------*/
@@ -780,6 +803,13 @@ section {
 .code-repo .icon-box:hover .icon {
   color: #fff;
   background: #006565;
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  .code-repo .p {
+    height: 100px;
+  }
 }
 
 /*--------------------------------------------------------------

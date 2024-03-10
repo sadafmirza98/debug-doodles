@@ -102,7 +102,7 @@ const CodeRepository = () => {
                 codes.map((code, index) => (
                   <div
                     key={index}
-                    className="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
+                    className="col-6 col-md-6 col-lg-6 d-flex align-items-stretch mt-4 mt-lg-0"
                   >
                     <div
                       className="icon-box mt-4"
