@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import EditCode from "./editCode"; // Import your EditCode component
+import EditCode from "./editCode";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const CodeRepository = () => {
-  const baseUrl = "https://debug-doodles-default-rtdb.firebaseio.com/code-repo";
+const CodeRepository = ({ loggedInUserId, handleCodePosted }) => {
+  const baseUrl = `https://debug-doodles-default-rtdb.firebaseio.com/users/${loggedInUserId}/code-repo`;
 
   const [editMode, setEditMode] = useState(false);
   const [selectedCode, setSelectedCode] = useState(null);
@@ -15,8 +17,11 @@ const CodeRepository = () => {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    // Call fetchData whenever handleCodePosted is called (i.e., a new code is posted)
+    if (handleCodePosted) {
+      fetchData(); // This will refresh the code list when a new code is posted
+    }
+  }, [handleCodePosted]); // This will run whenever handleCodePosted changes
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -46,18 +51,18 @@ const CodeRepository = () => {
       if (!response.ok) {
         throw new Error("Failed to delete code");
       }
-      // Remove the deleted code from the codes state
+      toast.success("Code deleted successfully!");
       setCodes(codes.filter((code) => code.id !== id));
       setEditMode(false); // Exit edit mode after deleting
     } catch (error) {
-      console.error("Error deleting code:", error);
+      toast.error("Error deleting the code.");
     }
   };
 
   const handleUpdateCode = async (id, updatedData) => {
     try {
       const response = await fetch(`${baseUrl}/${id}.json`, {
-        method: "PATCH", // Use PATCH method for partial updates
+        method: "PATCH",
         body: JSON.stringify(updatedData),
         headers: {
           "Content-Type": "application/json",
@@ -66,15 +71,15 @@ const CodeRepository = () => {
       if (!response.ok) {
         throw new Error("Failed to update code");
       }
-      // Update the code in the codes state with the updated data
       setCodes(
         codes.map((code) =>
           code.id === id ? { ...code, ...updatedData } : code
         )
       );
       setEditMode(false); // Exit edit mode after updating
+      toast.success("Code updated successfully!");
     } catch (error) {
-      console.error("Error updating code:", error);
+      toast.error("Error while updating code");
     }
   };
 
@@ -97,7 +102,6 @@ const CodeRepository = () => {
           </div>
           <div className="col-lg-8">
             <div className="row">
-              {/* Map over the array of icon boxes */}
               {codes.length > 0 ? (
                 codes.map((code, index) => (
                   <div
@@ -109,8 +113,7 @@ const CodeRepository = () => {
                       style={{ minWidth: "25vw" }}
                       data-aos="zoom-in"
                       data-aos-delay={100 * index}
-                      onClick={() => handleIconBoxClick(code)} // Pass the code data to handleIconBoxClick
-                      key={code.id}
+                      onClick={() => handleIconBoxClick(code)}
                     >
                       <a href="#edit-code">
                         <div className="icon">
@@ -144,6 +147,7 @@ const CodeRepository = () => {
           onUpdate={handleUpdateCode}
         />
       )}
+      <ToastContainer />
     </section>
   );
 };

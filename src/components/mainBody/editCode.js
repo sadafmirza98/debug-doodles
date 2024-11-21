@@ -1,29 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import CodeMirror from "@uiw/react-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
+import { oneDark } from "@codemirror/theme-one-dark";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const EditCode = ({ codeData, onDelete, onUpdate }) => {
-  if (!codeData) {
-    return <p>No code data available</p>;
-  }
+  const [code, setCode] = useState(codeData?.code || "");
 
   const handleUpdate = () => {
     const updatedData = {
       title: document.getElementById("title").value,
       description: document.getElementById("description").value,
-      code: document.getElementById("code").value,
+      code: code,
     };
 
-    // Call the onUpdate function passed from the parent component
     if (onUpdate) {
-      onUpdate(codeData.id, updatedData); // Pass the id and updated data to the parent component
+      onUpdate(codeData.id, updatedData);
     }
   };
 
   const handleDelete = () => {
-    // Call the onDelete function passed from the parent component
     if (onDelete) {
-      onDelete(codeData.id); // Pass the id of the code to be deleted
+      onDelete(codeData.id);
     }
   };
+
+  if (!codeData) {
+    return <p>No code data available</p>;
+  }
 
   return (
     <section id="edit-code" className="post-code">
@@ -33,8 +37,8 @@ const EditCode = ({ codeData, onDelete, onUpdate }) => {
             <div className="section-title" data-aos="fade-right">
               <h2>Edit Code</h2>
               <p style={{ fontSize: "20px" }}>
-                Make changes to existing codes, problem statements and make
-                modifications with ease.
+                Make changes to existing codes, problem statements, and modify
+                with ease.
               </p>
             </div>
           </div>
@@ -46,6 +50,9 @@ const EditCode = ({ codeData, onDelete, onUpdate }) => {
                   data-aos="zoom-in"
                   data-aos-delay="200"
                 >
+                  <div className="icon">
+                    <i className="bx bxs-edit"></i>
+                  </div>
                   <div className="form-group">
                     <label className="input-label" htmlFor="title">
                       Title:
@@ -56,7 +63,7 @@ const EditCode = ({ codeData, onDelete, onUpdate }) => {
                       id="title"
                       name="title"
                       placeholder="Enter title"
-                      defaultValue={codeData.title} // Populate title field with existing data
+                      defaultValue={codeData.title}
                       required
                     />
                   </div>
@@ -69,22 +76,27 @@ const EditCode = ({ codeData, onDelete, onUpdate }) => {
                       id="description"
                       name="description"
                       placeholder="Enter description"
-                      defaultValue={codeData.description} // Populate description field with existing data
+                      defaultValue={codeData.description}
                       required
                     ></textarea>
                   </div>
                   <div className="form-group">
                     <label className="input-label" htmlFor="code">
                       Code:
+                      <div className="info-icon-wrapper">
+                        <i
+                          className="fa-solid fa-circle-info info-icon"
+                          data-tooltip="This IDE currently only supports JavaScript."
+                        ></i>
+                      </div>
                     </label>
-                    <textarea
-                      className="form-control"
-                      id="code"
-                      name="code"
-                      placeholder="Enter code"
-                      rows="6"
-                      defaultValue={codeData.code} // Populate code field with existing data
-                    ></textarea>
+                    <CodeMirror
+                      value={code}
+                      extensions={[javascript()]}
+                      theme={oneDark}
+                      height="150px"
+                      onChange={(value) => setCode(value)}
+                    />
                   </div>
                   <button
                     className="button"

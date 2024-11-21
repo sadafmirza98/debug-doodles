@@ -1,150 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ isUserLoggedIn, onLogout }) => {
+  const [dropdownVisible, setDropdownVisible] = useState(false); // State to toggle dropdown visibility
+
+  const handleProfileClick = () => {
+    // Toggle the dropdown visibility when the profile is clicked
+    setDropdownVisible((prev) => !prev);
+  };
+
+  const handleLogout = () => {
+    onLogout(); // Call the logout function passed via props
+    setDropdownVisible(false); // Close the dropdown after logout
+  };
+
   useEffect(() => {
-    const navbarlinksActive = () => {
-      let position = window.scrollY + 200;
-      const navbarlinks = document.querySelectorAll("#navbar .scrollto");
-      navbarlinks.forEach((navbarlink) => {
-        if (!navbarlink.hash) return;
-        let section = document.querySelector(navbarlink.hash);
-        if (!section) return;
-        if (
-          position >= section.offsetTop &&
-          position <= section.offsetTop + section.offsetHeight
-        ) {
-          navbarlink.classList.add("active");
-        } else {
-          navbarlink.classList.remove("active");
-        }
-      });
-    };
-
-    /*     const scrollto = (el) => {
-      let header = document.querySelector("#header");
-      let offset = header.offsetHeight;
-
-      let elementPos = document.querySelector(el).offsetTop;
-      window.scrollTo({
-        top: elementPos - offset,
-        behavior: "smooth",
-      });
-    }; */
-
-    const selectHeader = document.querySelector("#header");
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add("header-scrolled");
-      } else {
-        selectHeader.classList.remove("header-scrolled");
-      }
-    };
-
-    window.addEventListener("load", navbarlinksActive);
-    window.addEventListener("load", headerScrolled);
-    window.addEventListener("scroll", navbarlinksActive);
-    window.addEventListener("scroll", headerScrolled);
-
-    return () => {
-      window.removeEventListener("load", navbarlinksActive);
-      window.removeEventListener("load", headerScrolled);
-      window.removeEventListener("scroll", navbarlinksActive);
-      window.removeEventListener("scroll", headerScrolled);
-    };
-  }, []);
-  useEffect(() => {
-    const select = (el, all = false) => {
-      el = el.trim();
-      if (all) {
-        return [...document.querySelectorAll(el)];
-      } else {
-        return document.querySelector(el);
-      }
-    };
-
-    const on = (type, el, listener, all = false) => {
-      let selectEl = select(el, all);
-      if (selectEl) {
-        if (all) {
-          selectEl.forEach((e) => e.addEventListener(type, listener));
-        } else {
-          selectEl.addEventListener(type, listener);
-        }
-      }
-    };
-
-    const onscroll = (el, listener) => {
-      el.addEventListener("scroll", listener);
-    };
-
-    const headerScrolled = () => {
-      let selectHeader = select("#header");
-      if (selectHeader) {
+    const handleScroll = () => {
+      const header = document.querySelector("#header");
+      if (header) {
         if (window.scrollY > 100) {
-          selectHeader.classList.add("header-scrolled");
+          header.classList.add("header-scrolled");
         } else {
-          selectHeader.classList.remove("header-scrolled");
+          header.classList.remove("header-scrolled");
         }
       }
-    };
 
-    const mobileNavToggle = (e) => {
-      select("#navbar").classList.toggle("navbar-mobile");
-      e.target.classList.toggle("bi-list");
-      e.target.classList.toggle("bi-x");
-    };
-
-    const mobileNavDropdownsActivate = (e) => {
-      if (select("#navbar").classList.contains("navbar-mobile")) {
-        e.preventDefault();
-        e.target.nextElementSibling.classList.toggle("dropdown-active");
-      }
-    };
-
-    const scrollToElement = (e) => {
-      if (select(e.target.hash)) {
-        e.preventDefault();
-        let navbar = select("#navbar");
-        if (navbar.classList.contains("navbar-mobile")) {
-          navbar.classList.remove("navbar-mobile");
-          let navbarToggle = select(".mobile-nav-toggle");
-          navbarToggle.classList.toggle("bi-list");
-          navbarToggle.classList.toggle("bi-x");
+      const position = window.scrollY + 200;
+      const navbarLinks = document.querySelectorAll("#navbar .scrollto");
+      navbarLinks.forEach((link) => {
+        if (!link.hash) return;
+        const section = document.querySelector(link.hash);
+        if (section) {
+          if (
+            position >= section.offsetTop &&
+            position <= section.offsetTop + section.offsetHeight
+          ) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
         }
-        let hash = e.target.hash;
-        window.scrollTo({
-          top: select(hash).offsetTop - select("#header").offsetHeight,
-          behavior: "smooth",
-        });
-      }
+      });
     };
 
-    const scrollToHashLink = () => {
-      if (window.location.hash) {
-        let hash = window.location.hash;
-        if (select(hash)) {
-          window.scrollTo({
-            top: select(hash).offsetTop - select("#header").offsetHeight,
-            behavior: "smooth",
-          });
-        }
-      }
-    };
-
-    headerScrolled();
-    window.addEventListener("load", headerScrolled);
-    onscroll(document, headerScrolled);
-
-    on("click", ".mobile-nav-toggle", mobileNavToggle);
-    on("click", ".navbar .dropdown > a", mobileNavDropdownsActivate, true);
-    on("click", ".scrollto", scrollToElement, true);
-    window.addEventListener("load", scrollToHashLink);
-
-    return () => {
-      window.removeEventListener("load", headerScrolled);
-      window.removeEventListener("load", scrollToHashLink);
-      window.removeEventListener("scroll", headerScrolled);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -153,12 +52,10 @@ const Header = () => {
         <div className="header-container d-flex align-items-center justify-content-between">
           <div className="logo">
             <h1 className="text-light">
-              <a href="index.html">
+              <a href="#home">
                 <h3>Debug Doodles</h3>
               </a>
             </h1>
-            {/* Uncomment below if you prefer to use an image logo */}
-            {/* <a href="index.html"><img src="assets/img/logo.png" alt="" className="img-fluid"></a> */}
           </div>
 
           <nav id="navbar" className="navbar">
@@ -173,21 +70,45 @@ const Header = () => {
                   About
                 </a>
               </li>
-              <li>
-                <a className="nav-link scrollto" href="#code-repo">
-                  Code Repository
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#post-code">
-                  Post Code
-                </a>
-              </li>
-              <li>
-                <a className="getstarted scrollto" href="#about">
-                  Get Started
-                </a>
-              </li>
+              {isUserLoggedIn && (
+                <>
+                  <li>
+                    <a className="nav-link scrollto" href="#code-repo">
+                      Code Repository
+                    </a>
+                  </li>
+                  <li>
+                    <a className="nav-link scrollto" href="#post-code">
+                      Post Code
+                    </a>
+                  </li>
+                </>
+              )}
+              {!isUserLoggedIn ? (
+                <li>
+                  <a className="getstarted scrollto" href="#login-signup">
+                    Get Started
+                  </a>
+                </li>
+              ) : (
+                <li className="profile-dropdown">
+                  <a href="#profile" onClick={handleProfileClick}>
+                    <i className="bi bi-person-circle"></i> Profile
+                  </a>
+                  {dropdownVisible && (
+                    <ul className="dropdown-menu">
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+              )}
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>

@@ -23,12 +23,17 @@ const About = () => {
               data-aos="fade-left"
               data-aos-delay="200"
             >
-              <p>Debug Doodle is as simple as 1-2-3.</p>
+              <p>Debug Doodle is as simple as 1-2-3-4.</p>
               <ul>
                 <li>
                   <i className="ri-check-double-line"></i>{" "}
+                  <strong>Join us: </strong>
+                  Sign up and Login to get access to your Code Repository.
+                </li>
+                <li>
+                  <i className="ri-check-double-line"></i>{" "}
                   <strong>Navigate to the 'Post Code' Section: </strong>Enter
-                  your 'Problem Statement' and fill in the details.Share your
+                  your 'Problem Statement' and fill in the details. Share your
                   ingenious solution and watch your solution come to life on
                   Debug Doodle!
                 </li>

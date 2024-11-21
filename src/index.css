@@ -190,6 +190,135 @@ li {
   }
 }
 
+/* Dropdown Container */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+/* Dropdown Menu */
+.profile-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 180px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When the dropdown is visible */
+.profile-dropdown .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dropdown Item */
+.profile-dropdown .dropdown-menu li {
+  list-style: none;
+}
+
+/* Toast notification styles */
+.toast {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: toastAnimation 3s forwards;
+}
+
+@keyframes toastAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.icon-box .CodeMirror {
+  height: auto;
+  min-height: 150px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #282c34;
+  color: #abb2bf;
+}
+
+.icon-box .output {
+  margin-top: 20px;
+  background: #f8f9fa;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  font-family: "Courier New", Courier, monospace;
+  color: #333;
+}
+.info-icon-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-left: 8px;
+}
+
+.info-icon {
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.info-icon:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+.info-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  transform: translateX(10%);
+  background-color: white;
+  color: rgb(58, 113, 101);
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  font-family: cursive;
+}
+
+.info-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -747,6 +876,18 @@ section {
     padding: 10vw;
     min-width: 85vw;
   }
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  color: #0056b3;
 }
 
 /*--------------------------------------------------------------
