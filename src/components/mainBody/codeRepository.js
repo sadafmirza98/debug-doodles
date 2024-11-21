@@ -17,31 +17,30 @@ const CodeRepository = ({ loggedInUserId, handleCodePosted }) => {
   };
 
   useEffect(() => {
-    // Call fetchData whenever handleCodePosted is called (i.e., a new code is posted)
-    if (handleCodePosted) {
-      fetchData(); // This will refresh the code list when a new code is posted
-    }
-  }, [handleCodePosted]); // This will run whenever handleCodePosted changes
-
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(`${baseUrl}.json`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`${baseUrl}.json`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        const codesArray = Object.keys(data || {}).map((key) => ({
+          id: key,
+          ...data[key],
+        }));
+        setCodes(codesArray);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
-      const data = await response.json();
-      const codesArray = Object.keys(data || {}).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      setCodes(codesArray);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setIsLoading(false);
+    };
+
+    if (handleCodePosted) {
+      fetchData();
     }
-  };
+  }, [baseUrl, handleCodePosted]);
 
   const handleDeleteCode = async (id) => {
     try {
