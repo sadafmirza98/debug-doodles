@@ -69,6 +69,7 @@ const PostCode = ({ loggedInUserId, onCodePosted }) => {
   const runCode = () => {
     try {
       // Run the code and capture the output
+      // eslint-disable-next-line no-eval
       const result = eval(formData.code);
       setOutput(result || "Code executed successfully (no output)");
     } catch (error) {
