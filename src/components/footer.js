@@ -6,11 +6,11 @@ function Footer() {
       <div className="container d-md-flex py-4">
         <div className="me-md-auto text-center text-md-start">
           <div className="copyright">
-            <div className="credits">Designed by</div>
+            <div className="credits">Developed by</div>
             <strong>
-              <span>Sadaf Mirza</span>
+              <span>Sadaf Mirza </span>
             </strong>
-            &copy; 2024 . All Rights Reserved
+            &copy; 2025 . All Rights Reserved
           </div>
         </div>
         <div className="social-links text-center text-md-right pt-3 pt-md-0">
